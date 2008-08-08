@@ -1,0 +1,13 @@
+1. build rpm and src.rpm from spec file:
+
+	rpmbuild -v -ba nginx.spec
+
+	//packages will build in /usr/src/redhat/
+
+
+2.build rpm pkg from src.rpm:
+
+	rpmbuild --rebuild nginx-0.6.32-3.src.rpm
+
+	//package will build in /usr/src/redhat/RPMS
+
