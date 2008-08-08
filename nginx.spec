@@ -31,10 +31,7 @@ Requires(postun):   initscripts
 Source0:    http://sysoev.ru/nginx/nginx-%{version}.tar.gz
 Source1:    %{name}.init
 Source2:    %{name}.logrotate
-Source3:    virtual.conf
-Source4:    ssl.conf
 Source5:    nginx-upstream-fair.tgz
-Source6:    upstream-fair.conf
 Source7:    %{name}.sysconfig
 Source100:  index.html
 Source102:  nginx-logo.png
@@ -111,7 +108,6 @@ export DESTDIR=%{buildroot}
     --without-http_limit_zone_module   \
     --without-http_empty_gif_module    \
     --without-http_browser_module      \
-    --without-mail_pop3_module         \
     --without-mail_imap_module         \
     --without-mail_smtp_module         \
     --with-cc-opt="%{optflags} $(pcre-config --cflags)" \
@@ -136,8 +132,6 @@ chmod 0755 %{buildroot}%{_sbindir}/nginx
 %{__install} -p -D -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 %{__install} -p -D -m 0644 %{SOURCE7} %{buildroot}%{_sysconfdir}/sysconfig/%{name}
 %{__install} -p -d -m 0755 %{buildroot}%{nginx_confdir}/conf.d
-%{__install} -p -m 0644 %{SOURCE3}    %{buildroot}%{nginx_confdir}
-%{__install} -p -m 0644 %{SOURCE4} %{SOURCE6} %{buildroot}%{nginx_confdir}/conf.d
 %{__install} -p -m 0644 %{SOURCE105}  %{buildroot}%{nginx_confdir}
 %{__install} -p -m 0644 %{SOURCE106}  %{buildroot}%{nginx_confdir}/conf.d
 %{__install} -p -m 0644 %{SOURCE107}  %{buildroot}%{nginx_confdir}
@@ -176,7 +170,6 @@ if [ $1 -ge 1 ]; then
 fi
 
 %files
-%{nginx_confdir}/virtual.conf
 %{nginx_confdir}/vhosts.conf
 %defattr(-,root,root,-)
 %doc LICENSE CHANGES README nginx-upstream-fair/README.nginx-upstream-fair
