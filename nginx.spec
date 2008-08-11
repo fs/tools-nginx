@@ -39,7 +39,7 @@ Source103:  50x.html
 Source104:  404.html
 Source105:  nginx.conf 
 Source106:  bots.conf
-Source107:  vhosts.conf
+Source107:  rails.example
 
 # removes -Werror in upstream build scripts.  -Werror conflicts with
 # -D_FORTIFY_SOURCE=2 causing warnings to turn into errors.
@@ -130,10 +130,10 @@ chmod 0755 %{buildroot}%{_sbindir}/nginx
 %{__install} -p -D -m 0755 %{SOURCE1} %{buildroot}%{_initrddir}/%{name}
 %{__install} -p -D -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 %{__install} -p -D -m 0644 %{SOURCE7} %{buildroot}%{_sysconfdir}/sysconfig/%{name}
-%{__install} -p -d -m 0755 %{buildroot}%{nginx_confdir}/conf.d
+%{__install} -p -d -m 0755 %{buildroot}%{nginx_confdir}/vhosts
 %{__install} -p -m 0644 %{SOURCE105}  %{buildroot}%{nginx_confdir}
-%{__install} -p -m 0644 %{SOURCE106}  %{buildroot}%{nginx_confdir}/conf.d
-%{__install} -p -m 0644 %{SOURCE107}  %{buildroot}%{nginx_confdir}
+%{__install} -p -m 0644 %{SOURCE106}  %{buildroot}%{nginx_confdir}
+%{__install} -p -m 0644 %{SOURCE107}  %{buildroot}%{nginx_confdir}/vhosts
 %{__install} -p -d -m 0755 %{buildroot}%{nginx_home}
 %{__install} -p -d -m 0755 %{buildroot}%{nginx_home_tmp}
 %{__install} -p -d -m 0755 %{buildroot}%{nginx_logdir}
@@ -169,7 +169,6 @@ if [ $1 -ge 1 ]; then
 fi
 
 %files
-%{nginx_confdir}/vhosts.conf
 %defattr(-,root,root,-)
 %doc LICENSE CHANGES README nginx-upstream-fair/README.nginx-upstream-fair
 %dir %{nginx_datadir}
@@ -178,13 +177,14 @@ fi
 #%{_mandir}/man3/%{name}.3pm.gz
 %{_initrddir}/%{name}
 %dir %{nginx_confdir}
-%dir %{nginx_confdir}/conf.d
-%config(noreplace) %{nginx_confdir}/conf.d/*.conf
 %config(noreplace) %{nginx_confdir}/win-utf
-%config(noreplace) %{nginx_confdir}/%{name}.conf.default
-%config(noreplace) %{nginx_confdir}/mime.types.default
+%config(noreplace) %{nginx_confdir}/bots.conf
 %config(noreplace) %{nginx_confdir}/fastcgi_params
 %config(noreplace) %{nginx_confdir}/fastcgi_params.default
+%config(noreplace) %{nginx_confdir}/mime.types.default
+%config(noreplace) %{nginx_confdir}/nginx.conf.default
+
+%config(noreplace) %{nginx_confdir}/vhosts/rails.example
 %config(noreplace) %{nginx_confdir}/koi-win
 %config(noreplace) %{nginx_confdir}/koi-utf
 %config(noreplace) %{nginx_confdir}/%{name}.conf
