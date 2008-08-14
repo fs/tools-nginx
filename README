@@ -1,15 +1,5 @@
-How build rpm and src.rpm from spec file:
+= How build rpm and src.rpm from spec file:
 	
-	1.copy files from SOURCES dir to /usr/src/redhat/SOURCES
+* make
 
-	2.rpmbuild -v -ba nginx.spec
-
-	packages will build in /usr/src/redhat/
-
-
-How build rpm pkg from src.rpm:
-
-	rpmbuild --rebuild nginx-0.6.32-3.src.rpm
-
-	//package will build in /usr/src/redhat/RPMS
 
