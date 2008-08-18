@@ -39,7 +39,7 @@ Source103:  50x.html
 Source104:  404.html
 Source105:  nginx.conf 
 Source106:  bots.conf
-Source107:  rails.example
+Source107:  status.conf
 
 # removes -Werror in upstream build scripts.  -Werror conflicts with
 # -D_FORTIFY_SOURCE=2 causing warnings to turn into errors.
@@ -94,11 +94,11 @@ export DESTDIR=%{buildroot}
     --lock-path=%{_localstatedir}/lock/subsys/%{name} \
     --with-http_ssl_module \
     --with-http_gzip_static_module \
+    --with-http_stub_status_module \
     --without-select_module             \
     --without-poll_module               \
     --without-http_charset_module       \
     --without-http_userid_module        \
-    --without-http_access_module       \
     --without-http_auth_basic_module   \
     --without-http_autoindex_module    \
     --without-http_geo_module          \
@@ -133,7 +133,7 @@ chmod 0755 %{buildroot}%{_sbindir}/nginx
 %{__install} -p -d -m 0755 %{buildroot}%{nginx_confdir}/vhosts
 %{__install} -p -m 0644 %{SOURCE105}  %{buildroot}%{nginx_confdir}
 %{__install} -p -m 0644 %{SOURCE106}  %{buildroot}%{nginx_confdir}
-%{__install} -p -m 0644 %{SOURCE107}  %{buildroot}%{nginx_confdir}/vhosts
+%{__install} -p -m 0644 %{SOURCE107}  %{buildroot}%{nginx_confdir}
 %{__install} -p -d -m 0755 %{buildroot}%{nginx_home}
 %{__install} -p -d -m 0755 %{buildroot}%{nginx_home_tmp}
 %{__install} -p -d -m 0755 %{buildroot}%{nginx_logdir}
@@ -184,7 +184,7 @@ fi
 %config(noreplace) %{nginx_confdir}/mime.types.default
 %config(noreplace) %{nginx_confdir}/nginx.conf.default
 
-%config(noreplace) %{nginx_confdir}/vhosts/rails.example
+%config(noreplace) %{nginx_confdir}/status.conf
 %config(noreplace) %{nginx_confdir}/koi-win
 %config(noreplace) %{nginx_confdir}/koi-utf
 %config(noreplace) %{nginx_confdir}/%{name}.conf
