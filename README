@@ -4,6 +4,6 @@
 
 = How commit changes to git repo
 
-	1. git commit
+	1. git commit -a
 	2. git push 
 
