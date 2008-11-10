@@ -51,7 +51,6 @@ Patch1:     nginx-auto-options.patch
 
 # configuration patch to match all the Fedora paths for logs, pid files
 # etc.
-Patch3:     nginx-conf.patch
 
 %description
 Nginx [engine x] is an HTTP(S) server, HTTP(S) reverse proxy and IMAP/POP3
