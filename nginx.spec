@@ -37,7 +37,6 @@ Source100:  index.html
 Source102:  nginx-logo.png
 Source103:  50x.html
 Source104:  404.html
-Source105:  nginx.conf 
 Source106:  bots.conf
 Source107:  status.conf
 
@@ -130,7 +129,6 @@ chmod 0755 %{buildroot}%{_sbindir}/nginx
 %{__install} -p -D -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/logrotate.d/%{name}
 %{__install} -p -D -m 0644 %{SOURCE7} %{buildroot}%{_sysconfdir}/sysconfig/%{name}
 %{__install} -p -d -m 0755 %{buildroot}%{nginx_confdir}/vhosts
-%{__install} -p -m 0644 %{SOURCE105}  %{buildroot}%{nginx_confdir}
 %{__install} -p -m 0644 %{SOURCE106}  %{buildroot}%{nginx_confdir}
 %{__install} -p -m 0644 %{SOURCE107}  %{buildroot}%{nginx_confdir}
 %{__install} -p -d -m 0755 %{buildroot}%{nginx_home}
