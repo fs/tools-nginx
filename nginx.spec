@@ -64,7 +64,6 @@ One third party module, nginx-upstream-fair has been added.
 %patch0 -p0
 %patch1 -p0
 #%patch2 -p0
-%patch3 -p0
 %{__tar} zxvf %{SOURCE5}
 
 %build
