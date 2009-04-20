@@ -8,8 +8,8 @@
 %define nginx_webroot   %{nginx_datadir}/html
 
 Name:           nginx
-Version:        0.6.32
-Release:        3%{?dist}
+Version:        0.6.36
+Release:        1
 Summary:        Robust, small and high performance http and reverse proxy server
 Group:          System Environment/Daemons   
 
