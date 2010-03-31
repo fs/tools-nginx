@@ -13,3 +13,9 @@ Only thing you need is change ree_dir and passenger version in nginx-passenger.s
 and edit nginx.conf after install (or update nginx-passenger-conf.patch)
 
 Enjoy passenger without apache!
+
+= About tools-nginx
+nginx+passenger - is a part of our global project sliceconfig ( http://github.com/fs/sliceconfig ).
+Sliceconfig is a very useful scripts which allow quick and easy setup new server with mysql, 
+passenger, and apache or nginx. It also installed vsftpd, iptables and so on, but you better look
+at sliceconfig on github project page
